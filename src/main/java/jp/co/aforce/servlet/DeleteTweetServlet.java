@@ -18,7 +18,7 @@ public class DeleteTweetServlet extends HttpServlet {
         String tweetIdStr = request.getParameter("tweetId");
 
         if (tweetIdStr == null || tweetIdStr.isEmpty()) {
-            // tweetIdが存在しない、または空の場合のエラーメッセージ
+            
             request.setAttribute("errorMessage", "削除するツイートが指定されていません。");
             request.getRequestDispatcher("error.jsp").forward(request, response);
             return;
@@ -30,12 +30,12 @@ public class DeleteTweetServlet extends HttpServlet {
             tweetDAO.deleteTweet(tweetId);
             response.sendRedirect("tweet_list.jsp");
         } catch (NumberFormatException e) {
-            // tweetIdが数値に変換できなかった場合のエラーメッセージ
+            
             request.setAttribute("errorMessage", "無効なツイートIDが指定されました。");
             request.getRequestDispatcher("error.jsp").forward(request, response);
         } catch (Exception e) {
             e.printStackTrace();
-            // その他のエラー処理
+            
             request.setAttribute("errorMessage", "ツイートの削除中にエラーが発生しました。");
             request.getRequestDispatcher("error.jsp").forward(request, response);
         }
