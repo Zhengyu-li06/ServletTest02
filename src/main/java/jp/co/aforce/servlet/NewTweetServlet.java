@@ -18,9 +18,9 @@ public class NewTweetServlet extends HttpServlet {
 		String content = request.getParameter("content");
 		String author = request.getParameter("author");
 		
-		if (content.length() > 255) {
+		if (author.length() > 255) {
            
-            request.setAttribute("errorMessage", "内容が長すぎます。再入力してください。");
+            request.setAttribute("errorMessage", "名前が長すぎます。再入力してください。");
             request.getRequestDispatcher("error.jsp").forward(request, response);
             return;
         }
